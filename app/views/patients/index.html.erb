@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-between  align-items-center mt-5">
+  <h1 class="display-1">Patients Index</h1>
+  <%= link_to "Add a new Patient +", new_patient_path, class:"btn btn-success", style:"border-radius:12px;"  %>
+</div>
+
+
+<h1 class="mt-5">All Patients</h1>
+
+<div class="grid mt-4 mb-5">
+  <% @patients.each do |patient| %>
+    <div class="doctor-card hvr-grow">
+      <div class="d-flex justify-content-start align-items-center">
+        <div class="blob" style="background-color: <%= ["#f6d575", "#f4c3c6", "#bea1f6", "#c7d8fd", "#daf6fc"].sample %>">
+          <h3><%= patient.emoji_avatar  %></h3>
+        </div>
+        <div class="specality-holder">
+          <h2 style="margin-left:10px" ><%= patient.first_name %> <%= patient.last_name %></h2>
+          <h6><%= patient.age %> Years</h6>
+        </div>
+
+      </div>
+      <div class="d-flex justify-content-between align-items-center mt-4">
+        <h5>Insurance</h5>
+        <div>
+        <h5><%= patient.insurance == "Private" ? "💰 💰 💰" : "💰" %></h5>
+        </div>
+       </div>
+
+       <div class="d-flex justify-content-between align-items-center mt-4">
+        <h5>Gender</h5>
+        <h5><i class="fa-solid <%= patient.gender == "F" ? "fa-venus" : "fa-mars"%>"></i></h5>
+
+       </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+        <h5>Status</h5>
+        <h5><i class="fa-solid <%= patient.cured ? "fa-heart" : "fa-skull"%>"></i></h5>
+
+       </div>
+
+
+
+
+      <div data-controller="accordion" class=" mt-4">
+        <div>
+        <button data-accordion-target="accordion" class="accordion  main-btn">Options +</button>
+            <div class="panel">
+              <%= link_to "More", patient_path(patient), class:"mt-2", style:"color:white;text-decoration:none"   %>
+              <%= link_to patient.cured ? "Sicken  #{patient.first_name} " : "Cure #{patient.first_name}", update_cure_patient_path(patient),   class:"mt-2", style:"color:white;text-decoration:none; padding-bottom: 5px;", data:{turbo_method: :patch}   %>
+        </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,50 @@
+
+<h1 class="mt-5">
+  <%= link_to patients_path do  %>
+      <i style="color:black;" class="fa-solid fa-arrow-left"></i>
+  <% end %>
+</h1>
+<h1 class="display-1 mt-5"><%= @patient.emoji_avatar %></h1>
+<h1><%= @patient.first_name%> <%= @patient.last_name%></h1>
+<%= link_to "Edit", edit_patient_path(@patient) %>
+
+<h2 class="mt-5">Sick: <%= @patient.cured ? "🟢" : "🔴" %> </h2>
+<h2 class="mt-2">Age: <%= @patient.age %> years </h2>
+<h2 class="mt-2">Insurance: <%= @patient.insurance %> </h2>
+<h2 class="mt-2">Gender: <%= @patient.gender %> </h2>
+<h2 class="mt-2">Overall Appointments: <%=  @appointment_count %> </h2>
+
+<div class="d-flex justify-content-end">
+
+
+  <% if @patient.cured %>
+  <%= link_to "Sicken Patient",update_cure_patient_path(@patient), class: "btn btn-warning mt-2", style:"border-radius:12px;", data:{turbo_method: :patch} %>
+  <% else %>
+    <%= link_to "Cure Patient", update_cure_patient_path(@patient), class: "btn btn-success mt-2", style:"border-radius:12px;", data:{turbo_method: :patch} %>
+  <% end %>
+</div>
+
+<h4 class="mt-5"><strong>Bio:</strong></h4>
+<h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, quae inventore quam perspiciatis assumenda ipsa asperiores! Accusantium repellendus commodi nesciunt, nobis quisquam tempore similique distinctio nam pariatur unde, debitis earum.</h5>
+<br>
+<br>
+<div class="d-flex justify-content-between   align-items-center">
+  <h1>Appointments</h1>
+  <%= link_to "Make an appointment for #{@patient.first_name}",  new_patient_appointment_path(@patient),class: "btn btn-primary", style:"border-radius:12px;" %>
+</div>
+
+<% @patient.appointments.each do |appointment| %>
+<div class="d-flex justify-content-between   align-items-center mt-4 mb-4">
+    <h3><%= appointment.reason %></h3>
+    <h3><%= link_to "#{appointment.doctor.title }. #{appointment.doctor.first_name} #{appointment.doctor.last_name} #{appointment.doctor.emoji_avatar}", doctor_path(appointment.doctor), style:"text-decoration:none;"%></h3>
+    <h3><%= appointment.date %></h3>
+    <h3>
+      <% if appointment.urgent %>
+        <span style="background-color:orange;" class="badge badge-pill badge-primary">Urgent</span>
+        <% else %>
+        <span style="background-color:grey;"  class="badge badge-pill badge-warning">Normal</span>
+      <% end %>
+    </h3>
+    </div>
+    <hr>
+<% end %>
