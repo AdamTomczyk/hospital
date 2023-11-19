@@ -10,7 +10,14 @@ Rails.application.routes.draw do
     end
 
     resources :educations, only: [:new, :create]
+  end
 
+  resources :patients do
+    member do
+      patch :update_cure
+    end
+
+      resources :appointments, only: [:new, :create]
   end
 
 end

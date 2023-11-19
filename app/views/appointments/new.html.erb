@@ -1,0 +1,15 @@
+<h1 class="mt-5">
+  <%= link_to patient_path(@patient) do  %>
+      <i style="color:black;" class="fa-solid fa-arrow-left"></i>
+  <% end %>
+</h1>
+
+<h1 class="display-1 mt-5">Create an Appointment 🤕</h1>
+
+<%= simple_form_for [@patient, @appointment] do |f| %>
+  <%= f.input :reason %>
+  <%= f.input :urgent %>
+  <%= f.input :date %>
+  <%= f.association :doctor, collection: Doctor.where(available: true), label_method: :create_collection_tag %>
+  <%= f.submit  class: "btn btn-success mt-4", style:"border-radius:12px" %>
+<% end %>

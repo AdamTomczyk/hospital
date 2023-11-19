@@ -1,0 +1,14 @@
+<h1 class="display-1 mt-5">Create a Patient 🤒</h1>
+
+<%= simple_form_for(@patient) do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :insurance, collection: ["Private", "Public"] %>
+    <%= f.input :emoji_avatar, collection: ["👩🏻", "👩🏼", "👩🏽", "👩🏿", "🧑🏻", "🧑", "🧑🏽", "👨🏻", "👨", "👨🏽", "👨🏾"], label: "Select Emoji" %>
+    <%= f.input :gender, collection: ["M", "F", "D"] %>
+     <div data-controller="form">
+     <p class="grey mb-3 mt-3" >Age: <span data-form-target="years">0<span> years</p>
+    <%= f.input :age, as: :range, selected: 2, input_html: { min: 1, max: 100, data: {action: "click->form#updateYears"}}, label: false%>
+    </div>
+    <%= f.submit class:"btn btn-success mt-4", style: "border-radius:12px;"%>
+<% end %>
