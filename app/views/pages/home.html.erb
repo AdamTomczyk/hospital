@@ -1,0 +1,16 @@
+<main>
+  <div class="left">
+  <div class="container">
+    <h1 class="mt-5 p-4">Welcome to the <br>Clinic </h1>
+
+    <div class="p-4">
+      <h3><%= link_to "Doctors ▸", doctors_path, style:"text-decoration:none;color:black;", class:"hvr-grow" %> </h3>
+      <h3 class="mt-4"><%= link_to "Patients ▸", doctors_path, style:"text-decoration:none;color:black;" , class:"hvr-grow"%> </h3>
+    </div>
+    </div>
+  </div>
+  <div class="right">
+    <%# <%= video_tag "pill.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video" %>
+    <%= image_tag "pill.png" %>
+  </div>
+</main>

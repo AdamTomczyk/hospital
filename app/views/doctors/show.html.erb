@@ -1,0 +1,43 @@
+
+<h1 class="mt-5">
+  <%= link_to doctors_path do  %>
+      <i style="color:black;" class="fa-solid fa-arrow-left"></i>
+  <% end %>
+</h1>
+<h1 class="display-1 mt-5"><%= @doctor.emoji_avatar %></h1>
+<h1><%= @doctor.title %>. <%= @doctor.first_name%> <%= @doctor.last_name%></h1>
+<%= link_to "Edit", edit_doctor_path(@doctor) %>
+
+<h2 class="mt-5">Available: <%= @doctor.available ? "🟢" : "🔴" %> </h2>
+<h2 class="mt-2">XP: <%= @doctor.experience %> years </h2>
+<h2 class="mt-2">Specality: <%= @doctor.speciality %> </h2>
+<h2 class="mt-2">⨏: <%= @average %> Pts </h2>
+
+<div class="d-flex justify-content-end">
+
+
+  <% if @doctor.available %>
+  <%= link_to "Make Unavailable", update_available_doctor_path(@doctor), class: "btn btn-warning mt-2", style:"border-radius:12px;", data:{turbo_method: :patch} %>
+  <% else %>
+    <%= link_to "Make Available", update_available_doctor_path(@doctor), class: "btn btn-success mt-2", style:"border-radius:12px;", data:{turbo_method: :patch} %>
+  <% end %>
+</div>
+
+<h4 class="mt-5"><strong>Bio:</strong></h4>
+<h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, quae inventore quam perspiciatis assumenda ipsa asperiores! Accusantium repellendus commodi nesciunt, nobis quisquam tempore similique distinctio nam pariatur unde, debitis earum.</h5>
+<br>
+
+<br>
+<div class="d-flex justify-content-between   align-items-center">
+  <h1>Academia</h1>
+  <%= link_to "Add a degree", new_doctor_education_path(@doctor), class: "main-btn", style:"border-radius:12px;" %>
+</div>
+
+<% @doctor.educations.each do |education| %>
+<div class="d-flex justify-content-between   align-items-center mt-4 mb-4">
+    <h3>University of <%= education.university %></h3>
+    <h3> <%= education.degree %></h3>
+    <h3><%= education.score %> Pts</h3>
+    </div>
+    <hr>
+<% end %>
