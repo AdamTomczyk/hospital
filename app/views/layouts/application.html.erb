@@ -11,6 +11,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if params[:controller] === "pages" && params[:action] == "home" %>
+      <%= yield %>
+    <% else %>
+       <div class="container">
+      <%= yield %>
+    </div>
+    <% end %>
   </body>
 </html>

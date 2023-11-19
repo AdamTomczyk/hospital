@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+6.times do
+  Doctor.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    title: ["Dr", "Prof"].sample,
+    available: [true, false].sample,
+    emoji_avatar: ["👩🏻", "👨🏻", "👩🏾‍🦱", "🧑🏽‍🦱", "👨🏿‍🦱", "🧑🏻‍🦰", "🧔‍♀️", "👱🏻‍♀️"].sample,
+    speciality: ["Dermatologist", "Pneumologist", "Cardiolgist", "Dentist", "GP"].sample,
+    experience: rand(2..6)
+  )
+end

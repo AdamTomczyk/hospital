@@ -94,7 +94,11 @@ GEM
       reline (>= 0.3.1)
     erubi (1.12.0)
     execjs (2.9.1)
+    faker (3.2.2)
+      i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
+    font-awesome-sass (6.4.2)
+      sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -232,10 +236,13 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  autoprefixer-rails
   bootsnap
   bootstrap (~> 5.2)
   capybara
   debug
+  faker
+  font-awesome-sass (~> 6.1)
   importmap-rails
   pg (~> 1.1)
   puma (~> 5.0)

@@ -1,0 +1,14 @@
+<h1 class="mt-5">
+  <%= link_to doctor_path(@doctor) do  %>
+      <i style="color:black;" class="fa-solid fa-arrow-left"></i>
+  <% end %>
+</h1>
+
+<h1 class="display-1 mt-5">Add a Degree 🎓</h1>
+
+<%= simple_form_for [@doctor, @education] do |f| %>
+  <%= f.input :university, label: "Name of City" %>
+  <%= f.input :score %>
+  <%= f.input :degree, label: "Degree Name" %>
+  <%= f.submit "Add a Degree to #{@doctor.title}. #{@doctor.last_name}", class: "btn btn-success mt-4", style:"border-radius:12px" %>
+<% end %>
