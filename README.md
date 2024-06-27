@@ -1,24 +1,5 @@
 # README
+Project solution for Lead TA - Rails Reboot *[Do not share with students]*
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# INSTURCTIONS
+https://coherent-nautilus-2c5.notion.site/ReBooty-Airbnb-Week-335ad1d5612c44bfb316248834684ff3
